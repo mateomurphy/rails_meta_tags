@@ -1,6 +1,10 @@
 = rails_meta_tags
 
-Description goes here.
+Easy meta tag generation for rails apps
+
+== Inspiration
+
+https://github.com/kpumuk/meta-tags
 
 == Contributing to rails_meta_tags
  
