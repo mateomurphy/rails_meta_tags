@@ -11,7 +11,7 @@ module Rails
   
       module InstanceMethods
         def meta
-          @meta ||= MetaTags.new(view_context)
+          @meta ||= MetaTags::Builder.new(view_context)
         end
       end
     end

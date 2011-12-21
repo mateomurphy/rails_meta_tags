@@ -1,21 +1,20 @@
-class MetaTags
-  cattr_accessor :site_name
+module Rails
+  module MetaTags
+    autoload :ControllerMethods,  'rails/meta_tags/controller_methods'
+    autoload :Builder,            'rails/meta_tags/builder'
   
-  cattr_accessor :seperator
-  @@seperator = " | "
+    mattr_accessor :site_name
+    @@site_name = "SITE"
   
-  attr_accessor :title
-  
-  def initialize(view_context)
-    @view_context = view_context
+    mattr_accessor :seperator
+    @@seperator = " | "
+    
+    mattr_accessor :creator
+    
+    mattr_accessor :publisher
+    
+    def self.config
+      yield self
+    end
   end
-  
-  def full_title
-    [@title, site_name].flatten.join(seperator).html_safe
-  end
-  
-  def render_tags
-    @view_context.content_tag :title, full_title
-  end
-  
 end
