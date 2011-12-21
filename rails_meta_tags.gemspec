@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rails_meta_tags}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mateo Murphy"]
   s.date = %q{2011-12-21}
-  s.description = %q{TODO: longer description of your gem}
+  s.description = %q{Easily manage your meta tags in rails projects}
   s.email = %q{mateo.murphy@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -26,8 +26,10 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/rails/meta_tags.rb",
+    "lib/rails/meta_tags/builder.rb",
     "lib/rails/meta_tags/controller_methods.rb",
     "lib/rails_meta_tags.rb",
+    "rails_meta_tags.gemspec",
     "spec/rails_meta_tags_spec.rb",
     "spec/spec_helper.rb"
   ]
@@ -35,7 +37,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.5.3}
-  s.summary = %q{TODO: one-line summary of your gem}
+  s.summary = %q{Metatag library for rails}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
