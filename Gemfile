@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 # Add dependencies required to use your gem here.
 # Example:
-gem "activesupport", "~> 3.1.3"
+gem "activesupport", "~> 3.2"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
