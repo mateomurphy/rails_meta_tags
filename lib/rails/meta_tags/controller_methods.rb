@@ -9,10 +9,8 @@ module Rails
         helper_method :meta
       end
   
-      module InstanceMethods
-        def meta
-          @meta ||= MetaTags::Builder.new(view_context)
-        end
+      def meta
+        @meta ||= MetaTags::Builder.new(view_context)
       end
     end
   end
