@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rails_meta_tags}
-  s.version = "0.0.4"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mateo Murphy"]
-  s.date = %q{2012-01-30}
+  s.date = %q{2012-03-03}
   s.description = %q{Easily manage your meta tags in rails projects}
   s.email = %q{mateo.murphy@gmail.com}
   s.extra_rdoc_files = [
@@ -28,15 +28,21 @@ Gem::Specification.new do |s|
     "lib/rails/meta_tags.rb",
     "lib/rails/meta_tags/builder.rb",
     "lib/rails/meta_tags/controller_methods.rb",
+    "lib/rails/meta_tags/model_support.rb",
+    "lib/rails/meta_tags/model_support/data.rb",
+    "lib/rails/meta_tags/model_support/data_config.rb",
     "lib/rails_meta_tags.rb",
     "rails_meta_tags.gemspec",
-    "spec/rails_meta_tags_spec.rb",
-    "spec/spec_helper.rb"
+    "spec/builder_spec.rb",
+    "spec/model_support_spec.rb",
+    "spec/spec_helper.rb",
+    "spec/support/models.rb",
+    "spec/support/request.rb"
   ]
   s.homepage = %q{http://github.com/mateomurphy/rails_meta_tags}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
+  s.rubygems_version = %q{1.5.2}
   s.summary = %q{Metatag library for rails}
 
   if s.respond_to? :specification_version then
