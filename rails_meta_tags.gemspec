@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rails_meta_tags}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mateo Murphy"]
-  s.date = %q{2012-03-03}
+  s.date = %q{2012-03-04}
   s.description = %q{Easily manage your meta tags in rails projects}
   s.email = %q{mateo.murphy@gmail.com}
   s.extra_rdoc_files = [
@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/rails/meta_tags.rb",
     "lib/rails/meta_tags/builder.rb",
+    "lib/rails/meta_tags/config.rb",
     "lib/rails/meta_tags/controller_methods.rb",
     "lib/rails/meta_tags/model_support.rb",
     "lib/rails/meta_tags/model_support/data.rb",
@@ -34,6 +35,7 @@ Gem::Specification.new do |s|
     "lib/rails_meta_tags.rb",
     "rails_meta_tags.gemspec",
     "spec/builder_spec.rb",
+    "spec/metatags_spec.rb",
     "spec/model_support_spec.rb",
     "spec/spec_helper.rb",
     "spec/support/models.rb",
