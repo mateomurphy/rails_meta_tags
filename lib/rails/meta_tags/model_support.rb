@@ -8,7 +8,7 @@ module Rails
       extend ActiveSupport::Concern
 
       # defaults specific to model support
-      DEFAULTS = { :title => :to_s, :created => :updated_at }
+      DEFAULTS = { :title => :to_s, :created => lambda { |r| r.updated_at.strftime('%Y-%m-%d') } }
   
       module ClassMethods
         def meta(&block)
