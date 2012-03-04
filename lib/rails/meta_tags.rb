@@ -2,6 +2,7 @@ module Rails
   module MetaTags
     autoload :ControllerMethods,  'rails/meta_tags/controller_methods'
     autoload :Builder,            'rails/meta_tags/builder'
+    autoload :Config,             'rails/meta_tags/config'    
     autoload :ModelSupport,       'rails/meta_tags/model_support'
   
     PROPERTIES = [
@@ -26,31 +27,24 @@ module Rails
       :content_type
     ]  
   
-    mattr_accessor :site_name
-    @@site_name = "SITE"
-  
     mattr_accessor :seperator
     @@seperator = " | "
-    
-    mattr_accessor :creator
-    
-    mattr_accessor :publisher
-    
+
     def self.config
       yield self
     end
     
     def self.defaults
-      {
-        :site_name => MetaTags.site_name,
-        :type => "website",  
-        :content_type => "text/html; charset=utf-8",
-        :created => Time.new.strftime('%Y-%m-%d'),
-        :language => I18n.locale.to_s,
-        :creator => MetaTags.creator,
-        :publisher => MetaTags.publisher || MetaTags.creator
-      }      
+      @defaults ||= Config.new
     end
-    
+
+    # default config
+    defaults.site_name    "SITE"
+    defaults.type         "website"
+    defaults.content_type "text/html; charset=utf-8"
+    defaults.created      lambda { |c| Time.new.strftime('%Y-%m-%d') }
+    defaults.language     lambda { |c| I18n.locale.to_s }
+    defaults.identifier   lambda { |c| c.request.url }
+    defaults.url          lambda { |c| c.request.url }
   end
 end

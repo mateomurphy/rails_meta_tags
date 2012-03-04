@@ -12,8 +12,7 @@ module Rails
       
       def initialize(view_context)
         @view_context = view_context
-        @data = MetaTags.defaults
-        @data[:identifier] = request.url
+        @data = MetaTags.defaults.to_hash
       end
   
       PROPERTIES.each do |t|
@@ -22,10 +21,16 @@ module Rails
       end
   
       def [](tag)
-        if resource
-          resource.meta[tag.to_sym] || @data[tag.to_sym]
+        tag = tag.to_sym
+        
+        return resource.meta[tag] if resource && resource.meta[tag].present?
+        
+        if @data[tag].is_a?(Symbol)
+          @view_context.send(@data[tag])
+        elsif @data[tag].respond_to?(:call)
+          @data[tag].call(@view_context)
         else
-          @data[tag.to_sym]
+          @data[tag]
         end
       end
   
@@ -34,8 +39,8 @@ module Rails
       end  
   
       def full_title
-        return MetaTags.site_name unless value_present?(:title)
-        [self[:title], MetaTags.site_name].flatten.join(MetaTags.seperator).html_safe
+        return MetaTags.defaults[:site_name] unless value_present?(:title)
+        [self[:title], MetaTags.defaults[:site_name]].flatten.join(MetaTags.seperator).html_safe
       end
 
       def value_present?(term)

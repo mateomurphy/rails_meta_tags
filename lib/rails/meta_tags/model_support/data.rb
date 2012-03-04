@@ -6,7 +6,6 @@ module Rails
     
         def initialize(config, model)
           @config, @model = config, model
-      
         end
     
         PROPERTIES.each do |t|
