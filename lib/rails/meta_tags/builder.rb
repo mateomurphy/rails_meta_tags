@@ -57,7 +57,7 @@ module Rails
         end
         
         OG_PROPERTIES.each do |property|
-          tags << tag(:meta, :name => "og:#{property}", :content => self[property]) if value_present?(property)
+          tags << tag(:meta, :name => "og:#{property}", :property => self[property]) if value_present?(property)
         end
         
         tags.join("\n").html_safe
