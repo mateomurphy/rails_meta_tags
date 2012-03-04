@@ -7,7 +7,8 @@ module Rails
             
       extend ActiveSupport::Concern
 
-      DEFAULTS = { :title => :to_s }
+      # defaults specific to model support
+      DEFAULTS = { :title => :to_s, :created => :updated_at }
   
       module ClassMethods
         def meta(&block)
@@ -16,7 +17,7 @@ module Rails
           if ancestor = meta_ancestor
             @data = DataConfig.new(ancestor.to_hash)
           else
-            @data = DataConfig.new(MetaTags.defaults)
+            @data = DataConfig.new(DEFAULTS)
           end
       
           @data.configure_via_block(block)
@@ -34,7 +35,6 @@ module Rails
         def meta_config
           @data || meta_ancestor
         end
-    
       end
 
       def meta
