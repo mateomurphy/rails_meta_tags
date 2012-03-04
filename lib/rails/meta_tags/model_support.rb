@@ -8,7 +8,7 @@ module Rails
       extend ActiveSupport::Concern
 
       # defaults specific to model support
-      DEFAULTS = { :title => :to_s, :created => lambda { |r| r.updated_at.strftime('%Y-%m-%d') } }
+      DEFAULTS = { :title => :to_s, :created => lambda { |r| r.updated_at.strftime('%Y-%m-%d') } }.freeze
   
       module ClassMethods
         def meta(&block)
@@ -17,7 +17,7 @@ module Rails
           if ancestor = meta_ancestor
             @data = DataConfig.new(ancestor.to_hash)
           else
-            @data = DataConfig.new(DEFAULTS)
+            @data = DataConfig.new(DEFAULTS.dup)
           end
       
           @data.configure_via_block(block)
