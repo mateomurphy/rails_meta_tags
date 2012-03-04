@@ -42,9 +42,9 @@ module Rails
     defaults.site_name    "SITE"
     defaults.type         "website"
     defaults.content_type "text/html; charset=utf-8"
-    defaults.created      lambda { |c| Time.new.strftime('%Y-%m-%d') }
-    defaults.language     lambda { |c| I18n.locale.to_s }
-    defaults.identifier   lambda { |c| c.request.url }
-    defaults.url          lambda { |c| c.request.url }
+    defaults.created      { |c| Time.new.strftime('%Y-%m-%d') }
+    defaults.language     { |c| I18n.locale.to_s }
+    defaults.identifier   { |c| c.request.url }
+    defaults.url          { |c| c.request.url }
   end
 end
