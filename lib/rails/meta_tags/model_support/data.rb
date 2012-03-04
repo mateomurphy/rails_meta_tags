@@ -9,7 +9,7 @@ module Rails
       
         end
     
-        TAGS.each do |t|
+        PROPERTIES.each do |t|
           class_eval "def #{t}; self[:#{t}]; end"
         end    
     
@@ -26,7 +26,7 @@ module Rails
         def to_hash
           result = {}
           config.to_hash.keys.each do |k|
-            result[k] = self[k]
+            result[k] = self[k] if self[k].present?
           end
           result
         end

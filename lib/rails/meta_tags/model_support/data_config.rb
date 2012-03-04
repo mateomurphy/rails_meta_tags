@@ -4,16 +4,14 @@ module Rails
       class DataConfig
         def initialize(data = nil)
           # defaults
-          @data = data
-          @data ||= DEFAULTS
-
+          @data = data || {}
         end
 
         def configure_via_block(block)
           instance_eval(&block)
         end      
 
-        TAGS.each do |t|
+        PROPERTIES.each do |t|
           class_eval "def #{t}(val = nil, &block); self[:#{t}] = val || block; end"
         end
     

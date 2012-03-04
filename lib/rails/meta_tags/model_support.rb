@@ -6,9 +6,8 @@ module Rails
       autoload :DataConfig, 'rails/meta_tags/model_support/data_config'
             
       extend ActiveSupport::Concern
-  
-      TAGS = [:title, :type, :image, :url, :audio, :description, :determiner, :locale, :site_name, :video]
-      DEFAULTS = { :type => "website", :title => :to_s }
+
+      DEFAULTS = { :title => :to_s }
   
       module ClassMethods
         def meta(&block)
@@ -17,7 +16,7 @@ module Rails
           if ancestor = meta_ancestor
             @data = DataConfig.new(ancestor.to_hash)
           else
-            @data = DataConfig.new
+            @data = DataConfig.new(MetaTags.defaults)
           end
       
           @data.configure_via_block(block)
