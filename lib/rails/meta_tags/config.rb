@@ -6,8 +6,8 @@ module Rails
       end
 
       def initialize(data = nil)
-        # defaults
         @data = data || {}
+        @instances = {}
       end
 
       def configure_via_block(block)
