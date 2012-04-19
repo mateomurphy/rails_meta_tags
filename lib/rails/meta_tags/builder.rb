@@ -50,6 +50,8 @@ module Rails
       def render_tags
         tags = []
         tags << content_tag(:title, full_title)
+        tags << tag(:meta, :name => 'title', :content => full_title)
+        tags << tag(:meta, :name => 'description', :content => description)
         tags << tag(:meta, :'http-equiv' => "Content-Type", :content => content_type)
         
         DC_TERMS.each do |term|
