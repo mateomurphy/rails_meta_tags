@@ -40,7 +40,7 @@ module Rails
   
       def full_title
         return MetaTags.defaults[:site_name] unless value_present?(:title)
-        [self[:title], MetaTags.defaults[:site_name]].flatten.join(MetaTags.seperator).html_safe
+        [self[:title], MetaTags.defaults[:site_name]].uniq.flatten.join(MetaTags.seperator).html_safe
       end
 
       def value_present?(term)
