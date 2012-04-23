@@ -7,8 +7,8 @@ module Rails
       
       attr_accessor :resource
       
-      DC_TERMS = %w(title creator subject created language identifier publisher)
-      OG_PROPERTIES= %w(title type image url audio description locale site_name video)
+      DC_TERMS = %w(creator subject created language identifier publisher)
+      OG_PROPERTIES= %w(type image url audio description locale site_name video)
       
       def initialize(view_context)
         @view_context = view_context
@@ -39,8 +39,19 @@ module Rails
       end  
   
       def full_title
-        return MetaTags.defaults[:site_name] unless value_present?(:title)
-        [self[:title], MetaTags.defaults[:site_name]].uniq.flatten.join(MetaTags.seperator).html_safe
+        if value_present?(:title)
+          [self[:title], MetaTags.defaults[:site_name]].flatten.join(MetaTags.seperator).html_safe
+        else
+          MetaTags.defaults[:site_name]
+        end
+      end
+
+      def title_or_site_name
+        if value_present?(:title)
+          self[:title]
+        else
+          MetaTags.defaults[:site_name]
+        end
       end
 
       def value_present?(term)
@@ -53,10 +64,12 @@ module Rails
         tags << tag(:meta, :name => 'description', :content => description)
         tags << tag(:meta, :'http-equiv' => "Content-Type", :content => content_type)
         
+        tags << tag(:meta, :name => "dcterms.title", :content => title_or_site_name)
         DC_TERMS.each do |term|
           tags << tag(:meta, :name => "dcterms.#{term}", :content => self[term]) if value_present?(term)
         end
         
+        tags << tag(:meta, :property => "og.title", :content => title_or_site_name)        
         OG_PROPERTIES.each do |property|
           tags << tag(:meta, :property => "og:#{property}", :content => self[property]) if value_present?(property)
         end
