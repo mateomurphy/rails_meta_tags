@@ -3,6 +3,7 @@ module Rails
     class Config
       PROPERTIES.each do |t|
         class_eval "def #{t}(val = nil, &block); self[:#{t}] = val || block; end"
+        class_eval "def #{t}=(val); self[:#{t}] = val; end"
       end
 
       def initialize(data = nil)
