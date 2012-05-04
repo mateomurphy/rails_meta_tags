@@ -69,7 +69,7 @@ module Rails
           tags << tag(:meta, :name => "dcterms.#{term}", :content => self[term]) if value_present?(term)
         end
         
-        tags << tag(:meta, :property => "og.title", :content => title_or_site_name)        
+        tags << tag(:meta, :property => "og:title", :content => title_or_site_name)        
         OG_PROPERTIES.each do |property|
           tags << tag(:meta, :property => "og:#{property}", :content => self[property]) if value_present?(property)
         end
