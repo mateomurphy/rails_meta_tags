@@ -1,5 +1,7 @@
 = rails_meta_tags
 
+{<img src="https://gemnasium.com/mateomurphy/rails_meta_tags.png" alt="Dependency Status" />}[https://gemnasium.com/mateomurphy/rails_meta_tags]
+
 Easy meta tag generation for rails apps
 
 == Inspiration
