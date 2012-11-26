@@ -61,6 +61,7 @@ module Rails
       def render_tags
         tags = []
         tags << tag(:meta, :'http-equiv' => "Content-Type", :content => content_type)
+        tags << tag(:meta, :'http-equiv' => "Content-Language", :content => language)
         tags << content_tag(:title, full_title)
         tags << tag(:meta, :name => 'description', :content => description)
 
