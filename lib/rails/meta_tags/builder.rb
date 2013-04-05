@@ -76,7 +76,7 @@ module Rails
           tags << tag(:meta, :property => "og:#{property}", :content => self[property]) if value_present?(property)
         end
 
-        tags << tag(:meta, :property => "viewport", :content => viewport)
+        tags << tag(:meta, :name => "viewport", :content => viewport)
         
         tags.join("\n").html_safe
       end
