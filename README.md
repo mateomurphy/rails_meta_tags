@@ -25,6 +25,7 @@ Easy meta tag generation for rails apps
 * identifier - dc
 * language
 * content_type
+* viewport
 
 Properties marked "og" and "dc" will be mapped to their open graph and dublin core properties, respectively
 
@@ -38,6 +39,7 @@ Properties marked "og" and "dc" will be mapped to their open graph and dublin co
       config.defaults.url         :canonical_url
       config.defaults.image       :mutek_logo_url
       config.defaults.description :default_description
+      config.defaults.viewport    "width=device-width"
     end
 
 Strings will be used as is, symbols will be called as instance methods on the current controller
