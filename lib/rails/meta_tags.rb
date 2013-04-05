@@ -24,7 +24,8 @@ module Rails
       :created,
       :identifier,
       :language,
-      :content_type
+      :content_type,
+      :viewport
     ]  
   
     mattr_accessor :seperator
@@ -46,5 +47,6 @@ module Rails
     defaults.language     { |c| I18n.locale.to_s }
     defaults.identifier   { |c| c.request.url }
     defaults.url          { |c| c.request.url }
+    defaults.viewport     "width=device-width"
   end
 end
