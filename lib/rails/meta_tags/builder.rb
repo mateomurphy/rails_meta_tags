@@ -75,6 +75,8 @@ module Rails
         OG_PROPERTIES.each do |property|
           tags << tag(:meta, :property => "og:#{property}", :content => self[property]) if value_present?(property)
         end
+
+        tags << tag(:meta, :name => "viewport", :content => viewport)
         
         tags.join("\n").html_safe
       end
