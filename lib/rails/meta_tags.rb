@@ -13,6 +13,7 @@ module Rails
       :image,
       :image_width,
       :image_height,
+      :image_type,
       :url,
       :description,
       :audio,

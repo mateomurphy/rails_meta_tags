@@ -8,7 +8,7 @@ module Rails
       attr_accessor :resource
 
       DC_TERMS = %w(creator subject created language identifier publisher)
-      OG_PROPERTIES= %w(type image url audio description locale site_name video image:height image:width)
+      OG_PROPERTIES= %w(type image url audio description locale site_name video image:height image:width image:type)
 
       def initialize(view_context)
         @view_context = view_context
