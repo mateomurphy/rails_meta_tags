@@ -1,3 +1,5 @@
+require "rails/meta_tags/version"
+
 module Rails
   module MetaTags
     autoload :ControllerMethods,  'rails/meta_tags/controller_methods'
