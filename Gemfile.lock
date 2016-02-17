@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_meta_tags (0.3.1)
+    rails_meta_tags (0.3.2)
       activesupport (~> 3.2)
 
 GEM
