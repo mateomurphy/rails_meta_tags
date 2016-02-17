@@ -2,13 +2,15 @@ module Rails
   module MetaTags
     autoload :ControllerMethods,  'rails/meta_tags/controller_methods'
     autoload :Builder,            'rails/meta_tags/builder'
-    autoload :Config,             'rails/meta_tags/config'    
+    autoload :Config,             'rails/meta_tags/config'
     autoload :ModelSupport,       'rails/meta_tags/model_support'
-  
+
     PROPERTIES = [
       :title,
       :type,
       :image,
+      :image_width,
+      :image_height,
       :url,
       :description,
       :audio,
@@ -26,15 +28,15 @@ module Rails
       :language,
       :content_type,
       :viewport
-    ]  
-  
+    ]
+
     mattr_accessor :seperator
     @@seperator = " | "
 
     def self.config
       yield self
     end
-    
+
     def self.defaults
       @defaults ||= Config.new
     end

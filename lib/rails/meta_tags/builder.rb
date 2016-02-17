@@ -8,7 +8,7 @@ module Rails
       attr_accessor :resource
 
       DC_TERMS = %w(creator subject created language identifier publisher)
-      OG_PROPERTIES= %w(type image url audio description locale site_name video)
+      OG_PROPERTIES= %w(type image url audio description locale site_name video image:height image:width)
 
       def initialize(view_context)
         @view_context = view_context
@@ -73,7 +73,8 @@ module Rails
 
         tags << tag(:meta, :property => "og:title", :content => title_or_site_name)
         OG_PROPERTIES.each do |property|
-          tags << tag(:meta, :property => "og:#{property}", :content => self[property]) if value_present?(property)
+          key = property.gsub(':', '_')
+          tags << tag(:meta, :property => "og:#{property}", :content => self[key]) if value_present?(key)
         end
 
         tags << tag(:meta, :name => "viewport", :content => viewport)
