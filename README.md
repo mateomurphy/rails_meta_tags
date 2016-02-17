@@ -9,6 +9,9 @@ Easy meta tag generation for rails apps
 * title
 * type - og
 * image - og
+* image_height - og
+* image_width - og
+* image_type - og
 * url - og
 * description - og
 * audio - og
@@ -37,7 +40,7 @@ Properties marked "og" and "dc" will be mapped to their open graph and dublin co
       config.defaults.publisher   "Publisher"
       config.defaults.identifier  :canonical_url
       config.defaults.url         :canonical_url
-      config.defaults.image       :mutek_logo_url
+      config.defaults.image       :logo_url
       config.defaults.description :default_description
       config.defaults.viewport    "width=device-width"
     end
@@ -76,7 +79,7 @@ Strings will be used as is, symbols will be called as instance methods on the mo
 https://github.com/kpumuk/meta-tags
 
 ## Contributing to rails_meta_tags
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project
@@ -87,6 +90,6 @@ https://github.com/kpumuk/meta-tags
 
 ## Copyright
 
-Copyright (c) 2011 Mateo Murphy. See LICENSE.txt for
+Copyright (c) 2011-2016 Mateo Murphy. See LICENSE.txt for
 further details.
 
